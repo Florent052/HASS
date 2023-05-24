@@ -1,0 +1,45 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: "Nestor"
+description: "Smart Alarm Central Service. Get your property 24/7 secured by professionals."
+url: http://67.207.85.46:3006/emergencies
+version: dev
+slug: "nestor_addons"
+init: false
+stdin: true
+homeassistant_api: true
+hassio_api: true
+hassio_role: admin
+startup: application
+environment:
+  TEST_ENVIRONMENT: hello
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+map:
+  - share:rw
+ingress: true
+ingress_port: 1052
+ingress_stream: true
+link: "http://67.207.85.46:3006/emergencies"
+webui: "http://[HOST]:[PORT:2839]"
+url_path: http://67.207.85.46:3006/emergencies
+panel_icon: mdi:shield-home-outline
+options:
+  Customer_fiste_name: ""
+  Costomer_last_name: ""
+  What_is_your_phone_number: ""
+  What_is_your_email_address: ""
+  What_is_your_billing_address?: ""
+  Which_property: ""
+schema:
+  Customer_fiste_name: str?
+  Costomer_last_name: str?
+  What_is_your_phone_number: int?
+  What_is_your_email_address: email?
+  Subscription: list(General safety monitoring service|Fire safety monitoring service)?
+  Payements: list(19.99$/month|119.99$/year)?
+  What_is_your_billing_address: str?
+  Which property: str?

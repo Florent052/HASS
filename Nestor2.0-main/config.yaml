@@ -1,0 +1,44 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: "Nestor"
+description: "Smart Alarm Central Service. Get your property 24/7 secured by professionals."
+version: "1.1.1"
+slug: "nestor_addons"
+init: false
+stdin: true
+homeassistant_api: true
+hassio_api: true
+hassio_role: admin
+#apparmor: false
+startup: application
+environment:
+  TEST_ENVIRONMENT: hello
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+map:
+  - share:rw
+ingress: true
+ingress_port: 1338
+ingress_stream: true
+webui: "[PROTO:ssl]://[HOST]:[PORT:8000]"
+url_path: https://vscode.dev/
+options:
+  Customer_fiste_name: "John"
+  Costomer_last_name: "DOE"
+  Which_property: "Which property"
+  What_is_your_phone_number: "+1"
+  What_is_your_email_address: "dxx@gmail.com"
+  What_is_your_billing_address?: "What is your billing address"
+schema:
+  Subscription: list(General safety monitoring service|Fire safety monitoring service)?
+  Payements: list(19.99$/month|119.99$/year)?
+  Which property: str?
+  Customer_fiste_name: str
+  Costomer_last_name: str
+  What_is_your_phone_number: int?
+  What_is_your_email_address: email?
+  What_is_your_billing_address: str?
+  Triggers: device?

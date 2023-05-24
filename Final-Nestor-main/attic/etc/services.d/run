@@ -1,0 +1,60 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the Nestor service
+# ==============================================================================
+
+#set -euo pipefail
+#set -x
+
+bashio::log.error "Starting up"
+exec /usr/bin/nestor-service.py
+
+# Add your code here
+
+# Declare variables
+declare -a options
+declare Subscription
+declare Payements
+declare Customer_fiste_name
+declare Costomer_last_name
+declare Which_property
+declare What_is_your_phone_number
+declare What_is_your_email_address
+declare What_is_your_billing_address
+
+bashio::log.info 'Starting Nestor-Adoons...'
+
+## Get the 'Subscription' key from the user config options.
+options+=(--bitrate $(bashio::config 'Subscription'))
+
+## Get the 'Payements' key from the user config options.
+options+=(--bitrate $(bashio::config 'Payements'))
+
+## Get the 'Customer_fiste_name' key from the user config options.
+Customer_fiste_name=$(bashio::config 'Customer_fiste_name')
+options+=(--Customer_fiste_name "${Customer_fiste_name}")
+
+## Get the 'Costomer_last_name' key from the user config options.
+Costomer_last_name=$(bashio::config 'Costomer_last_name')
+options+=(--Costomer_last_name "${Costomer_last_name}")
+
+## Get the 'Which_property' key from the user config options.
+Which_property=$(bashio::config 'Which_property')
+options+=(--Which_property "${Which_property}")
+
+## Get the 'What_is_your_phone_number' key from the user config options.
+What_is_your_phone_number=$(bashio::config 'What_is_your_phone_number')
+options+=(--What_is_your_phone_number "${What_is_your_phone_number}")
+
+## Get the 'What_is_your_email_address' key from the user config options.
+What_is_your_email_address=$(bashio::config 'What_is_your_email_address')
+options+=(--What_is_your_email_address "${What_is_your_email_address}")
+
+## Get the 'What_is_your_billing_address' key from the user config options.
+What_is_your_billing_address=$(bashio::config 'What_is_your_billing_address')
+options+=(--What_is_your_billing_address "${What_is_your_billing_address}")
+
+## Print the Customer_fiste_name the user supplied, defaults to "Hello World..."
+bashio::log.info "${Customer_fiste_name:=Customer_fiste_name}"
+
+## Run your program

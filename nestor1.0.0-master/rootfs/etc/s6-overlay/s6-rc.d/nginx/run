@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the example service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+bashio::log.info "Running nginx"
+
+exec nginx 
+exec python3 /usr/bin/main.py
+
+bashio::log.info "After exec nginx"

@@ -1,0 +1,18 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: Nestor Webui
+version: "0.0.1"
+slug: nestor
+description: nice
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+ingress: true
+host_network: false
+full_access: false
+panel_icon: mdi:router-wireless-settings
+
+

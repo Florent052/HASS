@@ -1,0 +1,26 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the example service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+# Add your code here
+
+# Declaring variables
+
+bashio::log.error "Starting up"
+# Add your code here
+
+# Declare variables
+declare -a options
+
+declare id
+
+bashio::log.info 'Starting Nestor-Adoons...'
+
+# Get the 'id' key from the user config options.
+
+Which_property=$(bashio::config 'id')
+options+=(--id "${id}")
+
+exec python3 /usr/bin/main.py

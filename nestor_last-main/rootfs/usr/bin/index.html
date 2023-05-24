@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: linear-gradient(to right, #ffffff, #a5a4a4, rgb(83, 81, 81));
+    background-position: center;
+    background-size: cover;
+
+  }
+
+  #regForm {
+    box-shadow: 10px 10px 5px 3px rgb(79, 79, 80);
+    background-color: #ffffff;
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 30%;
+    min-width: 300px;
+    border-radius: 30px;
+
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  input {
+    padding: 10px;
+    width: 97%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    transition: width 1s;
+
+  }
+
+
+  input:hover {
+
+    width: 100%;
+
+  }
+
+  select {
+    padding: 10px;
+    width: 97%;
+    font-size: 17px;
+    font-family: Raleway;
+    border: 1px solid #aaaaaa;
+    border-radius: 10px;
+    transition: width 1s;
+  }
+
+  select:hover {
+
+    width: 100%;
+
+  }
+
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #d89494;
+  }
+
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+
+  button {
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(to right, #3d6eea, #111c98);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: width 0.5s;
+
+  }
+
+  button:hover {
+    opacity: 10;
+    width: 120px;
+
+  }
+
+
+  #prevBtn {
+    margin-top: 20px;
+    background-color: #bbbbbb;
+  }
+
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+
+  .step.active {
+    opacity: 1;
+  }
+
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #04AA6D;
+  }
+
+  .service-icon-container span {
+    font-size: 80px;
+  }
+
+  .service-container-g.active {
+    background-color: rgb(209, 209, 209);
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    margin-top: 6px;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the radio button is checked, add a blue background */
+  .container input:checked~.checkmark {
+    background-color: #2196F3;
+  }
+
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked~.checkmark:after {
+    display: block;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  span .checkmark {
+    align-self: center;
+  }
+
+  .mobile {
+    padding: 4px;
+  }
+</style>
+
+<body>
+
+  <form id="regForm" action="https://webhook.site/c686811d-4aeb-40aa-a21d-f1fdc16df567">
+    <h1><img height="60" width="200" src="http://67.207.85.46:3006/static/media/v_logo.cbbb8fd9b3f9aa0349b2.png"
+        alt="logo"></h1>
+    <!-- One "tab" for each step in the form: -->
+    <div class="tab">Services
+      <p>Thank you for choosing Nestor, your Smart Alarm Central service provider.</p>
+      <small>
+        Because we all need to focus on different priorities, to sleep and travel, and because the technology is
+        sometimes failing, a professional service dedicated to monitoring your environment will help you to keep it
+        secure.
+      </small>
+
+      <p>What service would you like to subscribe to?</p>
+      <div class="service-container-g d-flex border mb-1" data-type="generale">
+        <div class="service-icon-container border d-flex align-items-center justify-content-center">
+          <span class="material-icons">
+            upcoming
+          </span>
+        </div>
+        <div class="service-description p-1">
+          <p class="mb-1">General safety monitoring service</p>
+          <small class="mb-0">Get a professional to monitor every single alarm triggered from your property and contact
+            Police if necessary.</small>
+        </div>
+      </div>
+      <div class="service-container-g d-flex border mb-1" data-type="fire">
+        <div class="service-icon-container border d-flex align-items-center justify-content-center">
+          <span class="material-icons">
+            local_fire_department
+          </span>
+        </div>
+        <div class="service-description p-1">
+          <p class="mb-1">Fire safety monitoring service</p>
+          <small class="mb-0">Get a professional to monitor every single alarm triggered from your property and contact
+            Police if necessary.</small>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+    <div class="tab">
+      <h2>General safety monitoring service</h2>
+      <p>
+        Smart Alarm Central Service is a insured and certified 24/7
+        service where professional agents will monitor alarms for you.
+      </p>
+
+      <div class="justify-content-center">
+
+        <label class="container">
+          <input type="radio" checked="checked" name="radio">
+          <span class="checkmark"></span>
+          19.99 $ /month
+        </label>
+
+        <label class="container">199.99 $ /year
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
+
+      </div>
+
+      <h3>Billing Address</h3>
+      <div class="row">
+        <div class="col-6">
+          <label for="adr"><i class="fa fa-address-card-o"></i> Country</label>
+          <input type="text" id="adr" name="Country" placeholder="United State"><label for="adr"></label>
+        </div>
+
+        <div class="col-6">
+          <label for=""><i class="fa fa-address-card-o"></i> Address</label>
+          <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" placeholder="NY">
+        </div>
+        <div class="col-6">
+          <label for="zip">Zip</label>
+          <input type="text" id="zip" name="zip" placeholder="10001">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tab">
+
+      <h2>General safety monitoring service</h2>
+      <p>
+        Please fill out the form below to finalize your registration.
+      </p>
+      <h3>Customer information</h3>
+      <div class="row">
+        <div class="col-6">
+          <label for="adr"><i class="fa fa-address-card-o"></i> What is your <b> first name </b>?
+          </label>
+          <input type="text" id="adr" name="Country" placeholder="Joe"><label for="adr"></label>
+        </div>
+
+        <div class="col-6">
+          <label for=""><i class="fa fa-address-card-o"></i> What is your <b>last name </b>?</label>
+          <input type="text" id="adr" name="address" placeholder="DOE">
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="state">What is your <b>phone number </b>?</label>
+          <input type="text" id="state" name="state" placeholder="+1 514 xxx xxxx">
+        </div>
+        <div class="col-6">
+          <label for="zip">What is your <b>email address </b>?</label>
+          <input type="text" id="zip" name="zip" placeholder="dxx@gmail.com">
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+          <div class="mobile">Is it a mobile?</div>
+        </label>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <label for="zip">What is your <b>billing address</b>?</label>
+          <input type="text" id="zip" name="zip" placeholder="">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="tab">Payement:
+      <div class="row">
+        <h1><img height="60" width="200" src="http://67.207.85.46:3006/static/media/v_logo.cbbb8fd9b3f9aa0349b2.png"
+          alt="logo"></h1>
+      </div>
+    </div> -->
+
+
+    <div class="tab">
+
+      <h2>General safety monitoring service</h2>
+      <p>
+        Please fill out the form below to define the desired process in
+        case of an alarm.
+      </p>
+
+      <p>
+        Common cases would be to call on-site to verify if the situation
+        is really happening. Then to call you to confirm or not. Then
+        some family, colleagues, neighbors, employees, etc.
+        In the last case, we would recommend choosing to contact the
+        Police if we have no other reason to stop the emergency
+        process.
+      </p>
+      <h3>Triggers
+      </h3>
+      <div>
+
+        <form>
+          <div class="">
+            <div class="col-lg-12">
+              <div id="row">
+                <div class="input-group m-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-danger" id="DeleteRow" type="button">
+                      <i class="bi bi-trash"></i>
+                      Delete
+                    </button>
+                  </div>
+                  <input type="text" class="form-control m-input">
+                </div>
+              </div>
+
+              <div id="newinput"></div>
+              <button id="rowAdder" type="button" class="btn btn-dark">
+                <span class="bi bi-plus-square-dotted">
+                </span> ADD
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="tab">
+
+      <h2>General safety monitoring service</h2>
+      <p>
+        Please fill out the form below to define the desired process in
+        case of an alarm.
+      </p>
+
+      <p>
+        In case of alarm who do you want us to contact in priority?
+      </p>
+
+      <h3>
+        Desired process
+      </h3>
+
+      <div>
+        <p>contact</p>
+        <form>
+          <div class="">
+            <div class="col-lg-12">
+              <div id="row">
+                <div class="input-group m-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-danger" id="DeleteRow" type="button">
+                      <i class="bi bi-trash"></i>
+                      Delete
+                    </button>
+                  </div>
+                  <input type="text" class="form-control m-input">
+                </div>
+              </div>
+
+              <div id="newinput"></div>
+              <button id="rowAdder" type="button" class="btn btn-dark">
+                <span class="bi bi-plus-square-dotted">
+                </span> ADD
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <!-- <div class="tab">Login Info:
+      <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+      <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+      <p><input placeholder="Confirm password..." oninput="this.className = ''" name="cpword" type="password"></p>
+    </div> -->
+
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next &#x27B2;</button>
+      </div>
+    </div>
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+      <!-- <span class="step"></span> -->
+      <span class="step"></span>
+    </div>
+  </form>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  <script>
+    $(".service-container-g").click(function (e) {
+      $(".service-container-g").removeClass("active");
+      $(this).addClass("active");
+      e.preventDefault();
+
+    });
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      //... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      //... and run a function that will display the correct step indicator:
+      fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class on the current step:
+      x[n].className += " active";
+
+    }
+  </script>
+
+  <script type="text/javascript">
+    var count = 0
+    $("#rowAdder").click(function () {
+
+      newRowAdd = `<div id="row" data-id='` + count + `'> <div class="input-group m-3">
+              <div class="input-group-prepend">
+              <button class="btn btn-danger" id="DeleteRow" type="button">
+              <i class="bi bi-trash"></i> Delete</button> </div>
+              <input type="text" class="form-control m-input"> </div> </div>`
+
+
+      $('#newinput').append(newRowAdd);
+      count++
+    });
+
+    $("body").on("click", "#DeleteRow", function () {
+      $(this).parents("#row").remove();
+    })
+  </script>
+</body>
+
+</html>
