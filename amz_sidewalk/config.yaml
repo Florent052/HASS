@@ -1,0 +1,34 @@
+# name: "Amanzon Sidewalk"
+# description: "Amanzon Sidewalk add-on!"
+# version: "1.0.0"
+# slug: "amanzon_sidewalk"
+# init: false
+# arch:
+#   - aarch64
+#   - amd64
+#   - armhf
+#   - armv7
+#   - i386
+
+name: "Amazon Sidewalk"
+description: "Amazon Sidewalk add-on!"
+version: "1.0.0"
+slug: "amazon_sidewalk"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+options:
+  Username : "Username"
+  Password : "Password"
+  Region : "Region"
+schema:
+  Username : str
+  Password : str
+  Region : str
+
+

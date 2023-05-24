@@ -1,0 +1,7 @@
+{
+    "domain": "amazon_sidewalk",
+    "name": "Amazon Sidewalk",
+    "documentation": "https://github.com/your_username/amazon_sidewalk",
+    "dependencies": [],
+    "codeowners": []
+}

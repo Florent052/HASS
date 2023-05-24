@@ -1,0 +1,18 @@
+name: "Akuvox Intercom"
+description: "Akuvox Intercom add-on!"
+version: "1.0.0"
+slug: "akuvox_intercom"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+options:
+  user_id: "12345"
+  api_key: "your api key"
+schema:
+  user_id: int?
+  api_key: str?

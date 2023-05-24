@@ -1,0 +1,17 @@
+{
+    "name": "Amazon Sidewalk",
+    "version": "0.1.0",
+    "description": "Intégration Amazon Sidewalk pour Home Assistant",
+    "url": "https://github.com/your_username/amazon_sidewalk",
+    "arch": [
+      "armhf",
+      "armv7",
+      "aarch64",
+      "amd64",
+      "i386"
+    ],
+    "documentation": "https://github.com/your_username/amazon_sidewalk/blob/main/README.md",
+    "docker_image": "your_dockerhub_username/amazon-sidewalk",
+    "startup": "before_all"
+  }
+  

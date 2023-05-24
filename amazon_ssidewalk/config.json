@@ -1,0 +1,8 @@
+{
+  "domain": "amazon_sidewalk",
+  "name": "Amazon Sidewalk master",
+  "version": "0.1.0",
+  "documentation": "https://github.com/your_username/amazon_sidewalk",
+  "dependencies": [],
+  "codeowners": []
+}

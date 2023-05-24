@@ -1,0 +1,4 @@
+# Contient les dépendances, s'il y en a, pour votre module complémentaire.
+# Par exemple :
+pyamazon-easy-setup==0.2.0
+boto3==1.17.93
